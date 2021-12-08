@@ -1,9 +1,13 @@
 #!/usr/bin/python3
-# Lock Boxes Interview Algorithm
+"""
+    Method that determines if all the boxes can be opened.
+"""
 
 
 def canUnlockAll(boxes):
-    """ lockboxes solver """
+    """
+        Return True if ALL boxes can be opened, else return False.
+    """
     l = len(boxes)
     d = {}
     d[0] = "unlocked"
