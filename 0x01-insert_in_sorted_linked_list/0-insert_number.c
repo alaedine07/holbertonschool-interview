@@ -18,10 +18,10 @@ listint_t *insert_node(listint_t **head, int number)
 	if (new == NULL)
 		return (NULL);
 	new->n = number;
-	/* insert at the beggining of linked list */
 	if (current->n > number)
 	{
 		new->next = *head;
+		*head = new;
 		return (new);
 	}
 	prev_curr = current;
