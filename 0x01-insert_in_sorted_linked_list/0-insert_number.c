@@ -1,4 +1,35 @@
 #include "lists.h"
+/**
+ * insert_logic - insert in rest of linked list
+ * @c: current_node
+ * @pc: previous node
+ * @new: new_node
+ * @n: number to be compared with
+ * Return: address of the new node
+ */
+listint_t *insert_logic(listint_t *c, listint_t *pc, int n, listint_t *new)
+{
+	while (c->next != NULL)
+	{
+		if (c->n > n)
+		{
+			new->next = c;
+			pc->next = new;
+			return (new);
+		}
+		pc = c;
+		c = c->next;
+	}
+	if (c->n > n)
+	{
+		new->next = c;
+		pc->next = new;
+		return (new);
+	}
+	new->next = NULL;
+	c->next = new;
+	return (new);
+}
 
 /**
  * insert_node - insert node in a sorted linked list
@@ -8,7 +39,6 @@
  */
 listint_t *insert_node(listint_t **head, int number)
 {
-	/* create the node */
 	listint_t *new;
 	listint_t *current;
 	listint_t *prev_curr;
@@ -18,6 +48,12 @@ listint_t *insert_node(listint_t **head, int number)
 	if (new == NULL)
 		return (NULL);
 	new->n = number;
+	if (*head == NULL)
+	{
+		new->next = NULL;
+		*head = new;
+		return (new);
+	}
 	if (current->n > number)
 	{
 		new->next = *head;
@@ -25,27 +61,6 @@ listint_t *insert_node(listint_t **head, int number)
 		return (new);
 	}
 	prev_curr = current;
-	while (current->next != NULL)
-	{
-		/* comparing with current pointer */
-		if (current->n > number)
-		{
-			new->next = current;
-			prev_curr->next = new;
-			return (new);
-		}
-		/* moving the pointers */
-		prev_curr = current;
-		current = current->next;
-	}
-	/* reached the last node */
-	if (current->n > number)
-	{
-		new->next = current;
-		prev_curr->next = new;
-		return (new);
-	}
-	new->next = NULL;
-	current->next = new;
+	new = insert_logic(current, prev_curr, number, new);
 	return (new);
 }
