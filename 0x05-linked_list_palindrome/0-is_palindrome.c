@@ -15,16 +15,16 @@ int is_palindrome(listint_t **head)
 
 	listint_t *current;
 
-	if (*head == NULL)
+	if (!head)
 		return (0);
-	/* get the size of the linked list */
+	if (!(*head))
+		return (1);
 	current = *head;
 	while (current->next != NULL)
 	{
 		n++;
 		current = current->next;
 	}
-	/* transform the linked list to array */
 	arr = malloc(n * sizeof(int));
 
 	current = *head;
@@ -46,5 +46,6 @@ int is_palindrome(listint_t **head)
 		}
 		k--;
 	}
+	free(arr);
 	return (palindrome);
 }
