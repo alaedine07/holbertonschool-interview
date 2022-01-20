@@ -1,6 +1,4 @@
 #include "lists.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
  * is_palindrome - check if linked list is palindrome
@@ -13,6 +11,7 @@ int is_palindrome(listint_t **head)
 	int n = 1;
 	int k, j, i = 0;
 	int palindrome = 1;
+	int *arr;
 
 	listint_t *current;
 
@@ -26,7 +25,7 @@ int is_palindrome(listint_t **head)
 		current = current->next;
 	}
 	/* transform the linked list to array */
-	int *arr = malloc(n * sizeof(int));
+	arr = malloc(n * sizeof(int));
 
 	current = *head;
 	while (current->next != NULL)
