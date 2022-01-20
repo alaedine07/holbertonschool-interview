@@ -37,7 +37,7 @@ int is_palindrome(listint_t **head)
 	arr[i++] = current->n;
 	/* check if the array is palindrome */
 	k = i - 1;
-	for (j = 0; j < i && j != k ; j++)
+	for (j = 0; j < i / 2 && j != k ; j++)
 	{
 		if (arr[j] != arr[k])
 		{
