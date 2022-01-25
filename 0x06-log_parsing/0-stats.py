@@ -8,9 +8,10 @@ def print_stats():
     codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
     total_sizes = 0
 
-    nb_lines = 1
+    nb_lines = 0
     try:
         for line in sys.stdin:
+            nb_lines += 1
             replaced_l = line.replace("-", " ")
             splited_line = replaced_l.split(" ")
             size = splited_line[-1]
@@ -24,8 +25,6 @@ def print_stats():
                         for key, value in codes.items():
                             print("{:}: {:}".format(key, value))
                         nb_lines = 0
-                    else:
-                        nb_lines += 1
     except Exception:
         pass
     finally:
