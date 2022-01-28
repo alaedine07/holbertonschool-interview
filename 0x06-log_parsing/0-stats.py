@@ -23,14 +23,16 @@ def print_stats():
                     if nb_lines == 10:
                         print("File size: {:d}".format(total_sizes))
                         for key, value in codes.items():
-                            print("{:}: {:}".format(key, value))
+                            if value != 0:
+                                print("{:}: {:}".format(key, value))
                         nb_lines = 0
     except Exception:
         pass
     finally:
         print("File size: {:d}".format(total_sizes))
         for key, value in codes.items():
-            print("{:}: {:}".format(key, value))
+            if value != 0:
+                print("{:}: {:}".format(key, value))
 
 
 if __name__ == '__main__':
