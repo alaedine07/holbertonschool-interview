@@ -35,7 +35,7 @@ def print_stats():
                         codes[int(status_code)] += 1
                         if nb_lines == 10:
                             print("File size: {:d}".format(total_sizes))
-                            for key, value in codes.items():
+                            for key, value in sorted(codes.items()):
                                 if value != 0:
                                     print("{:}: {:}".format(key, value))
                             nb_lines = 0
@@ -43,7 +43,7 @@ def print_stats():
         pass
     finally:
         print("File size: {:d}".format(total_sizes))
-        for key, value in codes.items():
+        for key, value in sorted(codes.items()):
             if value != 0:
                 print("{:}: {:}".format(key, value))
 
