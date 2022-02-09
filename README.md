@@ -1,2 +1,2 @@
 # holbertonschool-interview
-Interview preparation questions
+Interview preparation problems
