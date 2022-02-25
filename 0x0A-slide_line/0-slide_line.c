@@ -93,6 +93,44 @@ void merge_left(int *line, size_t size)
 }
 
 /**
+ * merge_right - merge numbers to the right
+ * @line: Pointer to an array of integers
+ * containing size elements
+ * @size: Number of elements in @array
+ */
+void merge_right(int *line, size_t size)
+{
+	size_t i, j;
+
+	i = size - 1;
+	while (i > 0)
+	{
+		while (line[i] == 0)
+			i--;
+		if (i > size)
+			break;
+		j = i - 1;
+		while (line[j] == 0)
+		{
+			if (j == 0)
+				break;
+			j--;
+		}
+		if (line[i] == line[j])
+		{
+			line[i] = line[i] + line[j];
+			line[j] = 0;
+			if (j != 0)
+				i = j - 1;
+		}
+		else
+		{
+			i = j;
+		}
+	}
+}
+
+/**
  * slide_line -  slides and merges an array of integers
  *
  * @line: Pointer to an array of integers
@@ -103,8 +141,6 @@ void merge_left(int *line, size_t size)
  */
 int slide_line(int *line, size_t size, int direction)
 {
-	size_t i, j;
-
 	if (direction == 1)
 	{
 		/* Merge to left */
@@ -114,30 +150,8 @@ int slide_line(int *line, size_t size, int direction)
 	}
 	else
 	{
-		i = size - 1;
-		while (i > 0)
-		{
-			while (line[i] == 0)
-				i--;
-			j = i - 1;
-			while (line[j] == 0)
-			{
-				if (j == 0)
-					break;
-				j--;
-			}
-			if (line[i] == line[j])
-			{
-				line[i] = line[i] + line[j];
-				line[j] = 0;
-				if (j != 0)
-					i = j - 1;
-			}
-			else
-			{
-				i = j;
-			}
-		}
+		/* merge to the right */
+		merge_right(line, size);
 		move_zeros_to_left(line, size);
 		return (1);
 	}
