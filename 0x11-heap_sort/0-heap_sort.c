@@ -53,6 +53,11 @@ void heap_sort(int *array, size_t size)
 	/* Build the max heap */
 	size_t i;
 
+	if (array == NULL)
+		return;
+	if (size == 0)
+		return;
+
 	for (i = size / 2 - 1; (int)i >= 0; i--)
 	{
 		heapify(array, size, i);
