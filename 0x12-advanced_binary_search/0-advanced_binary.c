@@ -48,6 +48,8 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	int result;
 
+	if (!array)
+		return (-1);
 	result = search(array, value, 0, size - 1);
 	return (result);
 }
