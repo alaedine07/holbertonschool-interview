@@ -70,6 +70,14 @@ void top_down_split_merge(int *array_copy, int begin, size_t end, int *array)
 	}
 	printf("\n");
 	top_down_merge(array_copy, begin, middle, end, array);
+	printf("[Done]: ");
+	for (i = begin; i < (int)end; i++)
+	{
+		printf("%d", array[i]);
+		if (i + 1 < (int)end)
+			printf(", ");
+	}
+	printf("\n");
 }
 /**
  * merge_sort - Sorts an array of integers using Merge-sort
