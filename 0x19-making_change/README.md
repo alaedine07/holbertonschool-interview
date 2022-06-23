@@ -10,3 +10,7 @@ Given a pile of coins of different values, determine the fewest number of coins 
 * The value of a coin will always be an integer greater than 0
 * You can assume you have an infinite number of each denomination of coin in the list
 * Your solution’s runtime will be evaluated in this task
+
+## resource
+
+[algorithm](https://www.youtube.com/watch?v=H9bfqozjoqs&ab_channel=NeetCode)

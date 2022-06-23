@@ -3,32 +3,23 @@
 making change module
 """
 
+
 def makeChange(coins, total):
     """
-    make change
+    make change: bottom up method
     """
     if total <= 0:
         return 0
     if total in coins:
         return 1
-    print(coins)
-    # print(coins)
-    # print(total)
-    min_steps = 789456
-    for i in range(0, len(coins)):
-        number = coins[i]
-        s = coins[i]
-        steps = 0
-        for j in range(i + 1, len(coins)):
-            # print("loop: ", coins[i], coins[j])
-            # print("debug 1 : ", s, coins[j])
-            s = s + coins[j]
-            # print("debug 2: ", s, coins[j])
-            if s > total:
-                break
-            steps = steps + 1
-            if s == total:
-                if steps <= min_steps:
-                    min_steps = steps
-                break
-    print(min_steps)
+    if len(coins) <= 0:
+        return -1
+    dp = [0] * (total + 1)
+    for i in range(1, total + 1):
+        dp[i] = total + 1
+    dp[0] = 0
+    for a in range(1, total + 1):
+        for coin in coins:
+            if a - coin >= 0:
+                dp[a] = min(dp[a], 1 + dp[a - coin])
+    return dp[total] if dp[total] != total + 1 else -1
