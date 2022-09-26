@@ -1,8 +1,15 @@
 #!/usr/bin/python3
-from math import factorial
 """
 Pascale triangle
 """
+
+def factorial(n):
+    if n == 0:
+        return 1
+    prod = 1
+    for i in range(1, n+1):
+        prod = prod * i
+    return prod
 
 
 def pascal_triangle(n):
